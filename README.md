@@ -1,4 +1,4 @@
-##dothome 웹 호스팅(무료)
+## dothome 웹 호스팅(무료)
 ```
 FTP 프로그램 (파일질라 이용)
 파일질라 -> 사이트관리자 -> 호스트(생성된 도메인) 사용자(닷홈에서 쓴 아이디) 비밀번호(닷홈에서 만든 비밀번호)
@@ -22,7 +22,8 @@ https://java119.tistory.com/55
 
 ## DB 생성, 테이블 생성, SELECT
 https://futurists.tistory.com/11
+
+## <filezilla로 ftp접속/root계정으로 접속>
 https://m.blog.naver.com/timeless947/221987884408
-<filezilla로 ftp접속/root계정으로 접속>
 
 
