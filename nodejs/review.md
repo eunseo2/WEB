@@ -14,3 +14,7 @@ Atom 설정 File - Setting 에서 Soft Wrap 을 사용
 ![12](https://user-images.githubusercontent.com/70589857/107457781-0b131b00-6b96-11eb-8c10-cd858c349816.PNG)
 
 - ctrl+c 서버 중지
+
+## template literals
+- 1! 옆에 있는 ` 이용
+- 변수는 따로 +변수이름+ 안하고 ${}로 쓰면 됨 
