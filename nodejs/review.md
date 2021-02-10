@@ -18,3 +18,8 @@ Atom 설정 File - Setting 에서 Soft Wrap 을 사용
 ## template literals
 - 1! 옆에 있는 ` 이용
 - 변수는 따로 +변수이름+ 안하고 ${}로 쓰면 됨 
+
+## url
+![url](https://user-images.githubusercontent.com/70589857/107476826-fba5c900-6bb9-11eb-8e1e-0cca070fbe81.PNG)
+http 80포트 기본
+url: http(protocol)://localhost(host,domian):3000(포트번호)/main(path) ?(query string 시작) id= CSS & page=12 
