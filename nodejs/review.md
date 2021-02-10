@@ -2,11 +2,17 @@
 1. https://nodejs.org/en/
 2. LTS 다운로드
 3. nodejs 폴더 생성( 코드 넣을 곳)
-4. Atom -> add project folder -> nodejs 폴더 선택
+4. Atom -> add project folder -> nodejs 폴더 선택(
+```
+자동 줄바꿈
+Atom 설정 File - Setting 에서 Soft Wrap 을 사용
+(Setting 중 Editor 항목에 있음)
 
-![1](https://user-images.githubusercontent.com/70589857/107144344-ee03ff80-697d-11eb-8b6b-6abe06d70e26.PNG)
+```
+# 서버 cmd 혹은 git bash 이용 가능
 
-# 서버 cmd 창에서 실행
-- node main.js
-- 서버 실행
+
+
+
+
 - ctrl+c 서버 중지
