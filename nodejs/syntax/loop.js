@@ -1,5 +1,11 @@
 console.log('A');
 console.log('B');
-console.log('C1');
-console.log('C2');
+
+var i = 0;
+while(i<3){
+  console.log('C1');
+  console.log('C2');
+  i+=1;
+
+}
 console.log('D');
