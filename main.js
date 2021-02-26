@@ -109,12 +109,18 @@ var app = http.createServer(function(request,response){
         var post = qs.parse(body);
         var title = post.title;
         var description = post.description;
-        response.writeHead(200);
+        fs.writeFile(`data/${title}`,description,'utf8',function(err){ //err은 에러가 있을 때 처리하는 방법
+
+          response.writeHead(302, {Location: `/?id=${title}`});//redirect 다른 페이지 보여주기 create_process에서 nodejs title, description 보여주기 위해서 
+          response.end('success');
+
+
+        })
+        //response.writeHead(200);
         // response.end(`<h1>${title}</h1> ${description}`); 받은거 보여줄때
 
       });
-      response.writeHead(200);
-      response.end('ssssss');
+
 }
      else {
       response.writeHead(404);
