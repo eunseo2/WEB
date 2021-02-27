@@ -3,7 +3,7 @@ var fs = require('fs');
 var url = require('url');
 var qs = require('querystring'); // post 방식으로 전송된 데이터 받기
 
-function templateHTML(title,list,body){
+function templateHTML(title,list,body,control){
   return `
   <!doctype html>
   <html>
@@ -14,7 +14,7 @@ function templateHTML(title,list,body){
   <body>
     <h1><a href="/">WEB</a></h1>
     ${list}
-    <a href="/create"> create</a>
+    ${control}
     ${body}
   </body>
   </html>
@@ -54,7 +54,9 @@ var app = http.createServer(function(request,response){
                     <li><a href="/?id=JavaScript">JavaScript</a></li>
                   </ul>`;
                 */
-                var template = templateHTML(title,list,`<h2>${title}</h2>${description}`);
+                var template = templateHTML(title,list,`<h2>${title}</h2>${description}`,
+                  `<a href="/create"> create</a> `
+                );
                 response.writeHead(200);
                 response.end(template);
             })
@@ -74,7 +76,10 @@ var app = http.createServer(function(request,response){
         fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
 
           var list=templateList(filelist);
-          var template = templateHTML(title,list,`<h2>${title}</h2>${description}`);
+          var template = templateHTML(title,list,`<h2>${title}</h2>${description}`,
+          `<a href="/create"> create</a> <a href="/update?id=${title}"> update</a>`
+
+          );
           response.writeHead(200);
           response.end(template);
         });
@@ -96,7 +101,7 @@ var app = http.createServer(function(request,response){
               <input type="submit">
             </p>
             </form>
-            `);
+            `,''); //create랑 update 버튼 필요없으므로 공백문자로 주기!
           response.writeHead(200);
           response.end(template);
         });
@@ -111,7 +116,7 @@ var app = http.createServer(function(request,response){
         var description = post.description;
         fs.writeFile(`data/${title}`,description,'utf8',function(err){ //err은 에러가 있을 때 처리하는 방법
 
-          response.writeHead(302, {Location: `/?id=${title}`});//redirect 다른 페이지 보여주기 create_process에서 nodejs title, description 보여주기 위해서 
+          response.writeHead(302, {Location: `/?id=${title}`});//redirect 다른 페이지 보여주기 create_process에서 nodejs title, description 보여주기 위해서
           response.end('success');
 
 
