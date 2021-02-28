@@ -77,7 +77,12 @@ var app = http.createServer(function(request,response){
 
           var list=templateList(filelist);
           var template = templateHTML(title,list,`<h2>${title}</h2>${description}`,
-          `<a href="/create"> create</a> <a href="/update?id=${title}"> update</a>`
+          `<a href="/create"> create</a>
+           <a href="/update?id=${title}"> update</a>
+          <form action="delete_process" method="post" onsubmit="return confirm('do you want to delete this file?')">
+           <input type="hidden" name="id" value="${title}">
+           <input type="submit" value="delete">
+          </form>`// 삭제는 <a href> 링크로 하면 안됨 get방식으로 했을 때 그 링크 다른 사람한테 보내면 그 페이지 삭제되니까 위험
 
           );
           response.writeHead(200);
@@ -167,8 +172,20 @@ var app = http.createServer(function(request,response){
        })
      });
  });
+} else if(pathname ==='/delete_process'){
+     var body = '';
+     request.on('data', function(data){
+         body = body + data;
+     });
+     request.on('end', function(){ //data 다 받으면
+       var post = qs.parse(body);
+       var id = post.id;
+       fs.unlink(`data/${id}`,function(error){
+         response.writeHead(302, {Location: `/`});
+         response.end();
+       })
 
-
+     });
    }
      else {
       response.writeHead(404);
