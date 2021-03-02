@@ -26,6 +26,15 @@ var app = http.createServer(function(request,response){
                     <li><a href="/?id=JavaScript">JavaScript</a></li>
                   </ul>`;
                 */
+
+                /*var list = '<ul>';
+                var i = 0;
+                while(i < filelist.length){
+                  list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+                  i = i + 1;
+                }
+                list = list+'</ul>';
+                */
                 var html = template.HTML(title,list,`<h2>${title}</h2>${description}`,
                   `<a href="/create"> create</a> `
                 );
@@ -36,15 +45,8 @@ var app = http.createServer(function(request,response){
 
       } else{ //querydata id 가 있다면
 
-        fs.readdir('./data', function(error, filelist){
-          /*var list = '<ul>';
-          var i = 0;
-          while(i < filelist.length){
-            list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
-            i = i + 1;
-          }
-          list = list+'</ul>';
-          */
+        fs.readdir('./data', function(error, filelist){ // 파일 목록 알아내기
+
         var filteredId = path.parse(queryData.id).base; //보안 ../password 막 사용자가 접근할 수 있는거 막는 것임 filter
         fs.readFile(`data/${filteredId}`, 'utf8', function(err, description){
 
@@ -124,7 +126,7 @@ var app = http.createServer(function(request,response){
           </form>
           `,
         `<a href="/create"> create</a> <a href="/update?id=${title}"> update</a>`
-
+        // value는 기본값
         );
         response.writeHead(200);
         response.end(html);
@@ -155,7 +157,8 @@ var app = http.createServer(function(request,response){
      request.on('end', function(){ //data 다 받으면
        var post = qs.parse(body);
        var id = post.id;
-       fs.unlink(`data/${id}`,function(error){
+       var filteredId = path.parse(id).base;
+       fs.unlink(`data/${filteredId}`,function(error){
          response.writeHead(302, {Location: `/`});
          response.end();
        })
