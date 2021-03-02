@@ -26,5 +26,5 @@ Atom 설정 File - Setting 에서 Soft Wrap 을 사용
 http 80포트 기본
 url: http(protocol)://localhost(host,domian):3000(포트번호)/main(path) ?(query string 시작) id= CSS & page=12 
 
-##mysql
+## mysql
 https://blog.naver.com/chh09056/222067371203
