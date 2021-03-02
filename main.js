@@ -1,11 +1,11 @@
-var http = require('http');
+var http = require('http');// http 모듈
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring'); // post 방식으로 전송된 데이터 받기
 var template = require('./lib/template.js')
 var path = require('path'); //보안
 
-var app = http.createServer(function(request,response){
+var app = http.createServer(function(request,response){ // createServer API 웹서버 만들기
     var _url = request.url;
     var queryData = url.parse(_url, true).query;  //URL 분석 id : css
     var pathname = url.parse(_url, true).pathname;
@@ -173,4 +173,4 @@ var app = http.createServer(function(request,response){
 
 
 });
-app.listen(3000);
+app.listen(3000); //포트번호 3000
