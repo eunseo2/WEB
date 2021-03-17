@@ -5,12 +5,13 @@ const { nanoid } = require('nanoid');
 
 function createMulterStorage() {
   const store = multer.diskStorage({
+    //서버에 저장할 폴더
     destination: imagesDir,
     filename: (req, file, cb) => {
       const { originalname } = file;
       const ext = path.extname(originalname);
       const name = path.basename(originalname, ext);
-      const filename = `${name}_${nanoid(6)}${ext}`;
+      const filename = `${name}_${nanoid(6)}${ext} `;
       cb(null, filename);
     },
   });
@@ -18,7 +19,6 @@ function createMulterStorage() {
 }
 
 const storage = createMulterStorage();
-
 const multerStorage = multer({ storage });
 
 module.exports = multerStorage;
